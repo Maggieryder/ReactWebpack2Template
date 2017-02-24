@@ -6,7 +6,8 @@
   "scripts": {
     "prod": "NODE_ENV=production webpack -p",
     "build": "webpack",
-    "start": "webpack-dev-server --progress"
+    "start": "webpack-dev-server --progress",
+    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages"
   },
   "author": "Maggie Ryder",
   "license": "ISC",
