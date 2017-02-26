@@ -1,0 +1,30 @@
+/*! Copyright Maggie Ryder 2017. */
+nav {
+  background: rgba(0, 0, 0, 0.2) url(/./images/art.png) no-repeat;
+  -webkit-transform: translate3d(50px, 0, 0);
+          transform: translate3d(50px, 0, 0); }
+  nav h1 {
+    color: yellow; }
+h1 {
+  color: blue;
+}
+html {
+  box-sizing: border-box;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0;
+  padding: 0;
+}
+    
