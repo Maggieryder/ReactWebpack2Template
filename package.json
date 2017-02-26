@@ -6,6 +6,7 @@
   "scripts": {
     "prod": "NODE_ENV=production webpack -p",
     "build": "webpack",
+    "serve": "node server",
     "start": "webpack-dev-server --progress",
     "deploy": "npm run build && git subtree push --prefix dist origin gh-pages"
   },
@@ -26,11 +27,13 @@
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.0.0",
     "html-webpack-plugin": "^2.28.0",
+    "image-webpack-loader": "^3.2.0",
     "json-loader": "^0.5.4",
     "node-sass": "^4.5.0",
     "postcss-loader": "^1.2.2",
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.4.1"

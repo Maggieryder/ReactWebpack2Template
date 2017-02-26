@@ -10,6 +10,7 @@ const VENDOR_LIBS = [
 ]
 
 module.exports = {
+  context: __dirname,
   devtool: 'cheap-module-eval-source-map',
   entry:{
     bundle: './src/index.jsx',
@@ -17,7 +18,7 @@ module.exports = {
   },
   output:{
     path: path.resolve(__dirname,'dist'),
-    filename: '[name].[chunkhash].js',
+    filename: 'js/[name].[chunkhash].js',
     publicPath: '/'
   },
   module: {
@@ -31,17 +32,7 @@ module.exports = {
         use: 'json-loader',
         test: /\.json$/
       },
-      {
-        //use: ['style-loader','css-loader?modules'],
-        test: /\.css$/,
-        //wp1
-        //use: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap')
-        //wp2
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?sourceMap'
-        })
-      },
+
       {
         //use: ['style-loader','css-loader', 'sass-loader'],
         use: ExtractTextPlugin.extract({
@@ -70,13 +61,49 @@ module.exports = {
         ],*/
         test: /\.scss$/
         //use: 'style-loader!css-loader!sass-loader?modules'
-        //use: 'style-loader!css-loader!sass-loader?modules'
+      },
+      {
+        //use: ['style-loader','css-loader?modules'],
+        test: /\.css$/,
+        //wp1
+        //use: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap')
+        //wp2
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: {
+            loader: 'css-loader?sourceMap',
+            options: {
+              //publicPath:__dirname
+            }
+          }
+        })
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader:'file-loader?context=assets&name=./[path][name].[ext]'
+
+          },
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              }
+            }
+          }
+        ]
       }
     ]
   },
   resolve: {
     modules:['node_modules'],
-    extensions: ['.js', '.jsx', '.css']
+    extensions: ['.js', '.jsx', '.json', '.css', '.scss']
   },
   plugins: [
     new webpack.BannerPlugin('Copyright Maggie Ryder 2017.'),
@@ -87,13 +114,13 @@ module.exports = {
       names:['vendor','manifest']
     }),
     new CleanWebpackPlugin(['dist'],{
-      root: __dirname,
-      exclude: ['images']
+      root: __dirname//,
+      //exclude: ['images']
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new ExtractTextPlugin('css/[name].css'),
+    new ExtractTextPlugin('css/[name].[contenthash].css'),
   ],
 
   /*postcss: [

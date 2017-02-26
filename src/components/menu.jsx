@@ -7,6 +7,11 @@ class Menu extends Component {
     return (
       <nav className={styles}>
         <h1>Navigation</h1>
+        <ul>
+          <li>one</li>
+          <li>two</li>
+          <li>three</li>
+        </ul>
       </nav>
     )
   }
