@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react'
-import styles from '../css/menu.css'
+import styles from '../css/menu.scss'
 
 
 class Menu extends Component {

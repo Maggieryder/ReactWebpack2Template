@@ -23,7 +23,7 @@ const CSSModuleLoaders = [
   {
     loader:'postcss-loader',
     options: {
-      plugins: [autoprefixer({browsers: ['last 10 versions']})]
+      plugins: [autoprefixer()]
     }
   }
 ]
@@ -35,7 +35,7 @@ const CSSLoaders = [
   {
     loader:'postcss-loader',
     options: {
-      plugins: [autoprefixer({browsers: ['last 10 versions']})]
+      plugins: [autoprefixer()]
     }
   },
   {
@@ -50,7 +50,7 @@ const SCSSLoaders = [
   {
     loader:'postcss-loader',
     options: {
-      plugins: [autoprefixer({browsers: ['last 10 versions']})]
+      plugins: [autoprefixer()]
     }
   },
   {
@@ -125,11 +125,11 @@ module.exports = {
       {
         //use: ['style-loader','css-loader?modules'],
         test: /\.css$/,
-        /*use: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: CSSLoaders
-        })*/
-        use: CSSModuleLoaders
+        })
+        //use: CSSModuleLoaders
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
