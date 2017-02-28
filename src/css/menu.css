@@ -1,12 +1,12 @@
 .menu {
   background: rgba(0,0,0,.2) url(../../assets/images/art.png) no-repeat;
   transform: translate3d(50px, 0,0);
+}
 
-  h1 {
-    color: yellow;
+.menu h1 {
+  color: yellow;
+}
 
-    .red {
-      color:red;
-    }
-  }
+.menu .red {
+  color:red;
 }

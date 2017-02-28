@@ -1,1 +1,1 @@
-TemplateReactWebpack
+ReactWebpack2Template

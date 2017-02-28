@@ -7,7 +7,7 @@ import img from '../../assets/images/art.png'
 class Container extends Component {
   render() {
     return(
-      <div className={styles.container}>
+      <div className={styles}>
         <Menu/>
         <h1>Hello World!</h1>
         <img src={img} width="100" height="150" />

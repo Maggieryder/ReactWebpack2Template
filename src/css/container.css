@@ -1,3 +1,9 @@
 h1 {
   color: blue;
+  background: url(../../assets/images/logo.svg) no-repeat;
+}
+
+img {
+  border:10px solid yellow;
+  transform:rotate(45deg);
 }
