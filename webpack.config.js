@@ -45,7 +45,13 @@ const CSSLoaders = [
 
 const SCSSLoaders = [
   {
-    loader:'css-loader'
+    loader: 'css-loader',
+    options: {
+      sourceMap: true,
+      localIdentName: '[local]___[hash:base64:5]',
+      importLoaders: 2,
+      modules: true,
+    }
   },
   {
     loader:'postcss-loader',
@@ -91,6 +97,7 @@ const IMGLoaders = [
 ]
 
 module.exports = {
+  mode: 'development',
   context: __dirname,
   devtool: 'cheap-module-eval-source-map',
   entry:{
@@ -144,18 +151,19 @@ module.exports = {
   plugins: [
     new webpack.BannerPlugin('Copyright Maggie Ryder 2017.'),
     new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.tmpl.html'
+      template: __dirname + '/src/index.tmpl.html',
+      filename: './index.html'
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names:['vendor','manifest']
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   names:['vendor','manifest']
+    // }),
     new CleanWebpackPlugin(['dist'],{
       root: __dirname//,
       //exclude: ['images']
     }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
+    // new webpack.DefinePlugin({
+    //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    // }),
     new ExtractTextPlugin({
       filename: 'css/[name].[chunkhash].css',
       allChunks: false
